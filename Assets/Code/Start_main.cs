@@ -21,7 +21,7 @@ public class Start_main : MonoBehaviour
    // Use this for initialization
    void Start()
    {
-      Debug.Log("Inside start");
+      //Debug.Log("Inside start");
       if (Application.platform == RuntimePlatform.Android || true)
       {
          screen_pixel = new Vector3(Screen.width, Screen.height, 1);

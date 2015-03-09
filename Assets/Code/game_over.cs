@@ -78,7 +78,7 @@ public class game_over : MonoBehaviour {
    {
       if (actual_game_script.isOver == true && actual_game_script.even_odd >= 100 ) {
          if (over_just_now == true) {
-            Debug.Log("inside over_just_now");
+            //Debug.Log("inside over_just_now");
             over_just_now = false;
 
             gui_text[1].text = "" + actual_game_script.score + "";
@@ -145,9 +145,9 @@ public class game_over : MonoBehaviour {
                for (int j = 0; j < stars_list.Count; j++) {
                   GameObject a_star = (GameObject)stars_list[j];
                   a_star.transform.position = new Vector3( a_star.transform.position.x, a_star.transform.position.y - screen_world.y * 0.01f, 1);
-                  Debug.Log("a_star y: " + a_star.transform.position.y + " .. screen.y = " + screen_world.y);
+                  //Debug.Log("a_star y: " + a_star.transform.position.y + " .. screen.y = " + screen_world.y);
                   if (a_star.transform.position.y < - screen_world.y/2) {
-                     Debug.Log("destroy a_star");
+                     //Debug.Log("destroy a_star");
                      Destroy(a_star);
                      stars_list.RemoveAt(j);
                   }

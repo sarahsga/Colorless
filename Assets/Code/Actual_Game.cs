@@ -68,7 +68,7 @@ public class Actual_Game : MonoBehaviour
 
    void Awake()
    {
-      Debug.Log("sarah: Actual_Game AWAKE");
+      //Debug.Log("sarah: Actual_Game AWAKE");
       text_repeat_script = GetComponent<text_repeat>();
       shuffle_script = GetComponent<shuffle>();
       level_common_script = GetComponent<level_common>();
@@ -86,27 +86,27 @@ public class Actual_Game : MonoBehaviour
       chance = true;
       isOver = false;
       score = 0;
-      Debug.Log("sarah: actual_game START");
+      //Debug.Log("sarah: actual_game START");
       if (GameObject.Find("stay_obj") == null)
       {
-         Debug.Log("stay_obj not found in the_game");
+         //Debug.Log("stay_obj not found in the_game");
       }
       else
       {
          stayed_Obj = GameObject.Find("stay_obj");
          level = stayed_Obj.GetComponent<stay>().level;
-         Debug.Log("stay_obj found!! level = " + level);
+         //Debug.Log("stay_obj found!! level = " + level);
       }
       Destroy(stayed_Obj); // destroying it as soon as we extract the value of level from it
       screen_pixel = new Vector3(Screen.width, Screen.height, 1);
-      Debug.Log(" screen_pixel = (" + screen_pixel.x + ", " + screen_pixel.y + ")");
+      //Debug.Log(" screen_pixel = (" + screen_pixel.x + ", " + screen_pixel.y + ")");
 
       screen_world = Camera.main.ScreenToWorldPoint(new Vector2(screen_pixel.x, screen_pixel.y));
-      Debug.Log(" screen_world (old) = (" + screen_world.x + ", " + screen_world.y + ")");
+      //Debug.Log(" screen_world (old) = (" + screen_world.x + ", " + screen_world.y + ")");
 
       screen_world = new Vector2(screen_world.x * 2, screen_world.y * 2);
 
-      Debug.Log(" screen_world (new) = (" + screen_world.x + ", " + screen_world.y + ")");
+      //Debug.Log(" screen_world (new) = (" + screen_world.x + ", " + screen_world.y + ")");
 
       color_display_size = level_common_script.color_display_size;
       color_display_position = level_common_script.color_display_position;
@@ -127,7 +127,7 @@ public class Actual_Game : MonoBehaviour
             greys[i] = (BoxCollider2D)Instantiate(grey_guess);
          }
 
-         Debug.Log("board size = ( " + level_common_script.board.transform.localScale.x + ", " + level_common_script.board.transform.localScale.y + " )");
+         //Debug.Log("board size = ( " + level_common_script.board.transform.localScale.x + ", " + level_common_script.board.transform.localScale.y + " )");
 
          //here's the formula i've used to calculate size of each colorbox and each gap
          // board.y = 6 units
@@ -161,7 +161,7 @@ public class Actual_Game : MonoBehaviour
          // here's the formula for finding out the positions for each colorbox ( only x coordinate shown
          // board.position.x - gapsize*(horizontal index of colorbox) + colorboxsize*(horizontal index of colorbox - 1) 
 
-         Debug.Log("board position = ( " + level_common_script.board.transform.position.x + ", " + level_common_script.board.transform.position.y + " )");
+         //Debug.Log("board position = ( " + level_common_script.board.transform.position.x + ", " + level_common_script.board.transform.position.y + " )");
 
          positions = new Vector3[DIFFICULTY];
          int counter = 0;
@@ -171,13 +171,13 @@ public class Actual_Game : MonoBehaviour
             { // traversing horizontal for each vertical
                positions[counter].x = level_common_script.board.transform.position.x + gapSize.x * j + colorSize.x * (j - 1); // x positions only affected by horizontal traverse.. hence * j
                positions[counter].y = level_common_script.board.transform.position.y - gapSize.y * i - colorSize.y * (i - 1); // y positions only affected by vertical traverse.... hence * i 
-               Debug.Log("postions[ " + counter + " ] = ( " + positions[counter].x + ", " + positions[counter].y + " )");
+               //Debug.Log("postions[ " + counter + " ] = ( " + positions[counter].x + ", " + positions[counter].y + " )");
                counter++;
             }
          }
          for (int i = 0; i < DIFFICULTY; i++)
          {
-            Debug.Log("colors[ " + i + " ] = ( " + colors[i].ToString() + ", " + colors[i].ToString() + " )");
+            //Debug.Log("colors[ " + i + " ] = ( " + colors[i].ToString() + ", " + colors[i].ToString() + " )");
             colors[(int)(randomness_obj.random_index_list[i])].transform.position = new Vector3(positions[i].x, positions[i].y, 1);
             greys[i].transform.position = new Vector3(positions[i].x, positions[i].y, 1);
          }
@@ -188,7 +188,7 @@ public class Actual_Game : MonoBehaviour
       }
       else
       {
-         Debug.Log("Sorry, level = " + level);
+         //Debug.Log("Sorry, level = " + level);
       }
    }
 
@@ -201,7 +201,7 @@ public class Actual_Game : MonoBehaviour
          {
             if (start_level == true)
             {
-               Debug.Log("start_level = true");
+               //Debug.Log("start_level = true");
                for (int i = 0; i < greys.Length; i++)
                {
                   greys[i].renderer.enabled = true;
@@ -216,27 +216,27 @@ public class Actual_Game : MonoBehaviour
 
                if (touch.phase == TouchPhase.Began)
                {
-                  Debug.Log("Touch phase began");
+                  //Debug.Log("Touch phase began");
                   touch_world = Camera.main.ScreenToWorldPoint(touch.position);
                   touch_world.z = 1;
 
-                  Debug.Log("layer = " + LayerMask.NameToLayer("grey_guess"));
+                  //Debug.Log("layer = " + LayerMask.NameToLayer("grey_guess"));
 
                   hit = (BoxCollider2D)Physics2D.OverlapPoint(touch_world, 1 << LayerMask.NameToLayer("grey_guess"));
 
                   if (hit)
                   {
-                     Debug.Log(" easy hit " + hit.ToString());
+                     //Debug.Log(" easy hit " + hit.ToString());
                      for (int i = 0; i < greys.Length; i++)
                      {
                         if (hit == greys[i])
                         {
-                           Debug.Log(" hit grey[ " + i + "]");
+                           //Debug.Log(" hit grey[ " + i + "]");
                            greys[i].renderer.enabled = false;
-                           Debug.Log("color = " + color + " compared to random_index_list [" + i + "] = " + randomness_obj.random_index_list[i]);
+                           //Debug.Log("color = " + color + " compared to random_index_list [" + i + "] = " + randomness_obj.random_index_list[i]);
                            if (color == (int)randomness_obj.random_index_list[i])
                            {
-                              Debug.Log("touch = correct!!");
+                              //Debug.Log("touch = correct!!");
                               show = false;
                               even_odd = 0;
                               score++;
@@ -247,10 +247,10 @@ public class Actual_Game : MonoBehaviour
                            {
                               check_isOver();
                               if (isOver != true) {
-                                 Debug.Log("blinker: isOver != true..");
+                                 //Debug.Log("blinker: isOver != true..");
                                  for (int k = 0; k < greys.Length; k++) {
                                     if (color == (int)randomness_obj.random_index_list[k]) {
-                                       Debug.Log("blinker: the_correct_one = " + k);                                       
+                                       //Debug.Log("blinker: the_correct_one = " + k);                                       
                                        the_correct_one = k;
                                        show = true;
                                        break;
@@ -265,10 +265,10 @@ public class Actual_Game : MonoBehaviour
                }
                else if (touch.phase == TouchPhase.Ended)
                {
-                  Debug.Log("touch ended");
+                  //Debug.Log("touch ended");
                   for (int i = 0; i < greys.Length; i++)
                   {
-                     Debug.Log("blinker: about to disable...");
+                     //Debug.Log("blinker: about to disable...");
                      if (i == the_correct_one && show == true)
                      { }
                      else
@@ -287,7 +287,7 @@ public class Actual_Game : MonoBehaviour
             {
                if (even_odd % 20 == 0) // trial and error.. frequency == 20 looked fine
                {
-                  Debug.Log("blinker: even_odd == " + even_odd);
+                  //Debug.Log("blinker: even_odd == " + even_odd);
                   if (greys[the_correct_one].renderer.enabled == false)
                   {
                      greys[the_correct_one].renderer.enabled = true;
@@ -362,7 +362,7 @@ public class Actual_Game : MonoBehaviour
       }
       color_display_obj = (GameObject)Instantiate(colors[color], color_display_position, Quaternion.identity);
       color_display_obj.transform.localScale = color_display_size;
-      Debug.Log("color (int) = " + color + " = " + color_display_obj.ToString());
+      //Debug.Log("color (int) = " + color + " = " + color_display_obj.ToString());
    }
 
    public void Check_Level() {
@@ -376,8 +376,8 @@ public class Actual_Game : MonoBehaviour
          gapSize.x = (0.40f * level_common_script.board.transform.localScale.x) / (COLUMN_COUNT + 1);
          gapSize.y = (0.40f * level_common_script.board.transform.localScale.y) / (ROW_COUNT + 1);
 
-         Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
-         Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
+         //Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
+         //Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
 
       }
       else if (level == 2)
@@ -390,8 +390,8 @@ public class Actual_Game : MonoBehaviour
          gapSize.x = (0.25f * level_common_script.board.transform.localScale.x) / (COLUMN_COUNT + 1);
          gapSize.y = (0.50f * level_common_script.board.transform.localScale.y) / (ROW_COUNT + 1);
 
-         Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
-         Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
+         //Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
+         //Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
 
       }
 
@@ -405,8 +405,8 @@ public class Actual_Game : MonoBehaviour
          gapSize.x = (0.25f * level_common_script.board.transform.localScale.x) / (COLUMN_COUNT + 1);
          gapSize.y = (0.25f * level_common_script.board.transform.localScale.y) / (ROW_COUNT + 1);
 
-         Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
-         Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
+         //Debug.Log("gap size = ( " + gapSize.x + ", " + gapSize.y + " )");
+         //Debug.Log("color size = ( " + colorSize.x + ", " + colorSize.y + " )");
 
       }
    }

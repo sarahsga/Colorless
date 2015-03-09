@@ -27,7 +27,7 @@ public class level_common : MonoBehaviour
    public bool justStarted { get; private set; }
    void Awake()
    {
-      Debug.Log("sarah: level_common AWAKE");
+      //Debug.Log("sarah: level_common AWAKE");
       screen_pixel = new Vector3(Screen.width, Screen.height, 1);
 
       screen_world = Camera.main.ScreenToWorldPoint(new Vector2(screen_pixel.x, screen_pixel.y));
@@ -95,10 +95,10 @@ public class level_common : MonoBehaviour
 
             if (hit)
             {
-               Debug.Log("touch its a hit level_common.. hit = " + hit.ToString());
+               //Debug.Log("touch its a hit level_common.. hit = " + hit.ToString());
                if (hit == btn_back) // the order of ifs and else ifs matters here... background needs to be iffed after btn_pause and btn_resume
                {
-                  Debug.Log(" touch hit == back button");
+                  //Debug.Log(" touch hit == back button");
                   btn_back.audio.Play();
                   Application.LoadLevel("choose_level");
                }

@@ -28,19 +28,19 @@ public class randomness {
 
       for (int i = 0; i < difficulty; i++) {
          random_helper_list.Add(i);
-         Debug.Log("random_helper_list[" + i + "] = " + (int)random_helper_list[i]);
+         //Debug.Log("random_helper_list[" + i + "] = " + (int)random_helper_list[i]);
       }
 
       for (int i = 0; i < difficulty; i++) {
          random_number = random_obj.Next(0,difficulty - i);
-         Debug.Log("random_number = " + random_number);
+         //Debug.Log("random_number = " + random_number);
          random_index_list.Add(random_helper_list[random_number]);
          random_helper_list.RemoveAt(random_number);
       }
 
       for (int i = 0; i < difficulty; i++)
       {
-         Debug.Log("random_index_list[" + i + "] = " + (int)random_index_list[i]);
+         //Debug.Log("random_index_list[" + i + "] = " + (int)random_index_list[i]);
       }
    }
 

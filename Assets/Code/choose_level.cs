@@ -25,16 +25,16 @@ public class choose_level : MonoBehaviour
    public GameObject sound_click;
 
    void Awake() {
-      Debug.Log("sarah: choose_level AWAKE");
+      //Debug.Log("sarah: choose_level AWAKE");
 
       stay_obj_script = stay_obj.GetComponent<stay>();
-      Debug.Log("sarah : stay_obj is NOT null. stay_obj_script.level = " + stay_obj_script.level );
+      //Debug.Log("sarah : stay_obj is NOT null. stay_obj_script.level = " + stay_obj_script.level );
    }
 
    // Use this for initialization
    void Start()
    {
-      Debug.Log("choose_level START");
+      //Debug.Log("choose_level START");
       screen_pixel = new Vector3(Screen.width, Screen.height, 1);
       screen_world = Camera.main.ScreenToWorldPoint(new Vector2(screen_pixel.x, screen_pixel.y));
       screen_world = new Vector2(screen_world.x * 2, screen_world.y * 2);
@@ -89,24 +89,24 @@ public class choose_level : MonoBehaviour
                   if (hit == btn_easy)
                   {
                      stay_obj_script.level = 1;
-                     Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
+                     //Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
                   }
 
                   else if (hit == btn_medium)
                   {
                      stay_obj_script.level = 2;
-                     Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
+                     //Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
                   }
 
                   else 
                   {
                      stay_obj_script.level = 3;
-                     Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
+                     //Debug.Log("btn easy pressed.. here, script.level = " + stay_obj_script.level);
                   }
                   sound_click.audio.Play();
                   DontDestroyOnLoad(sound_click);
                   DontDestroyOnLoad(stay_obj);
-                  Debug.Log("just before going.. script.level = " + stay_obj_script.level);
+                  //Debug.Log("just before going.. script.level = " + stay_obj_script.level);
                   Application.LoadLevel("the_game");
                }
             }

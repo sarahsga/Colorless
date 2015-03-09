@@ -29,7 +29,7 @@ public class time_bar : MonoBehaviour {
       if (level_common_script.justStarted == false && text_repeat_script.isReady == true && actual_game_script.isOver == false) { // i.e. has started && isn't paused
          if (time_passed == 0) {
             isTimeUp = false;
-            Debug.Log("sarah : timebar is enabled .. so inside Update().. time_passed == 0 ");
+            //Debug.Log("sarah : timebar is enabled .. so inside Update().. time_passed == 0 ");
             width = level_common_script.screen_world.x;
             for (int i = 0; i < actual_game_script.greys.Length; i++) {
                actual_game_script.greys[i].renderer.enabled = true;
