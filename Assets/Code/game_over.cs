@@ -15,6 +15,7 @@ public class game_over : MonoBehaviour {
    private float gui_text_pos_y;
    public GameObject sound_obj;
    public GameObject stayed_obj;
+   [HideInInspector]
    public bool isHighScore;
    private int even_odd;
    private bool over_just_now;

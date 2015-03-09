@@ -64,10 +64,12 @@ public class shuffle : MonoBehaviour {
                randomness_obj2.random_index_list_gen(actual_game_script.DIFFICULTY);
                //Debug.Log("shuffle: new list generated");
                equality_count = 0;
+               int loop_count = 0;
                foreach (int i in random_index_list_shuffling) {
-                  if (i == (int)randomness_obj2.random_index_list[i]) {
+                  if (i == (int)randomness_obj2.random_index_list[loop_count]) {
                      equality_count++;
                   }
+                  loop_count++;
                   //Debug.Log("shuffle: random_index_list[" + i + "] (new) = " + (int)randomness_obj2.random_index_list[i]);
                }
                //Debug.Log("shuffle: equality_count = " + equality_count);

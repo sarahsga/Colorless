@@ -20,7 +20,6 @@ public class choose_level : MonoBehaviour
    private BoxCollider2D hit;
 
    public GameObject stay_obj;
-   public GameObject stay_obj_helper;
    private stay stay_obj_script;
    public GameObject sound_click;
 

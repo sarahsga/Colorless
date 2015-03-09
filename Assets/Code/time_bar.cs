@@ -9,8 +9,13 @@ public class time_bar : MonoBehaviour {
    public const int TIME_INIT = 30;
    private level_common level_common_script;
    public GameObject MainCamera;
+   
+   [HideInInspector]
    public bool isTimeUp;
+
+   [HideInInspector]
    public shuffle shuffle_script;
+
    private Actual_Game actual_game_script;
    private text_repeat text_repeat_script;
 

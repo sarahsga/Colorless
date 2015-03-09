@@ -12,7 +12,9 @@ public class Actual_Game : MonoBehaviour
    public GameObject[] colorsAll;
    public GameObject[] colors;
 
+   [HideInInspector]
    public GameObject color_display_obj;
+
    private int random_int;
    private int color;
 
@@ -51,18 +53,22 @@ public class Actual_Game : MonoBehaviour
    private float COLOR_SIZE_PERCENT;
 
    private bool isSetUp = false;
+   [HideInInspector]
    public bool isOver;
+   [HideInInspector]
    private bool chance;
+   [HideInInspector]
    public int score;
 
    private int the_correct_one;
    private bool show;
+   [HideInInspector]
    public int even_odd;
 
    [HideInInspector]
    public GameObject time_bar;
-   public time_bar time_bar_script;
-   public shuffle shuffle_script;
+   private time_bar time_bar_script;
+   private shuffle shuffle_script;
 
    private text_repeat text_repeat_script;
 
