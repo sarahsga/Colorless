@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 84987941e82dec947a1d27b7c7e7b66e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: lgrey
+    21300002: dGrey
+    21300004: white
+    21300006: lGreen
+    21300008: pink
+    21300010: yellow
+    21300012: dBlue
+    21300014: lBlue
+    21300016: purple
+    21300018: blackish
+    21300020: orange
+    21300022: mGreen
+    21300024: dGreen
+    21300026: red
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: lgrey
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 452
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dGrey
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 452
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: white
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 452
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: lGreen
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 452
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pink
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 452
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: yellow
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 242
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dBlue
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 242
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: lBlue
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 242
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: purple
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 242
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: blackish
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 242
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: orange
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 32
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mGreen
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 32
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dGreen
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 32
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: red
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 32
+        width: 202
+        height: 202
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

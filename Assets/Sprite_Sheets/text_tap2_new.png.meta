@@ -1,0 +1,113 @@
+fileFormatVersion: 2
+guid: a4179e5a159081f4b90561a990aec171
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: text_tap_to_go_new
+    21300002: text_colourless_new
+    21300004: text_ready_in_new
+    21300006: text_1_new
+    21300008: text_2_new
+    21300010: text_3_new
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: text_tap_to_go_new
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 226
+        width: 321
+        height: 81
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: text_colourless_new
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 142
+        width: 399
+        height: 77
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: text_ready_in_new
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 58
+        width: 311
+        height: 79
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: text_1_new
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 229
+        width: 66
+        height: 83
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: text_2_new
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 142
+        width: 64
+        height: 77
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: text_3_new
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 51
+        width: 66
+        height: 79
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
