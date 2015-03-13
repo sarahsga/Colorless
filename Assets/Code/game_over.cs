@@ -23,8 +23,10 @@ public class game_over : MonoBehaviour {
    private randomness randomness_obj;
    private ArrayList stars_list;
    private int level;
+   private GoogleMobileAdsScript ads_script;
 
    void Awake() {
+      ads_script = GetComponent<GoogleMobileAdsScript>();
       even_odd = 0;
       randomness_obj = new randomness();
       isHighScore = false;
@@ -34,11 +36,12 @@ public class game_over : MonoBehaviour {
    }
 
    void Start() {
+      ads_script.RequestBanner();
       screen_world = level_common_script.screen_world;
       game_over_box.transform.localScale = new Vector3(screen_world.x, (screen_world.y * 0.8f - level_common_script.top_bar.transform.localScale.y) / 5, 1);
       game_over_box.transform.position = new Vector3(0, level_common_script.top_bar.transform.position.y - level_common_script.top_bar.transform.localScale.y - level_common_script.time_bar.transform.localScale.y, 1);
 
-      game_over_box_list = new GameObject[5];
+      game_over_box_list = new GameObject[7];
 
       game_over_box_list[0] = game_over_box;
 
@@ -81,9 +84,8 @@ public class game_over : MonoBehaviour {
          if (over_just_now == true) {
             //Debug.Log("inside over_just_now");
             over_just_now = false;
-
             gui_text[1].text = "" + actual_game_script.score + "";
-
+            ads_script.bannerView.Show();
             for (int i = 0; i < game_over_box_list.Length; i++) {
                game_over_box_list[i].renderer.enabled = true;
             }            
@@ -117,6 +119,8 @@ public class game_over : MonoBehaviour {
 
                if (hit == btn_play_again)
                {
+                  ads_script.bannerView.Hide();
+                  ads_script.bannerView.Destroy();
                   DontDestroyOnLoad(stayed_obj);
                   sound_obj.audio.Play();
                   DontDestroyOnLoad(sound_obj);

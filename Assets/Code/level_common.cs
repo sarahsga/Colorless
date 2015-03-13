@@ -23,10 +23,12 @@ public class level_common : MonoBehaviour
 
    private Vector3 touch_world;
    private BoxCollider2D hit;
+   private GoogleMobileAdsScript ads_script;
 
    public bool justStarted { get; private set; }
    void Awake()
    {
+      ads_script = GetComponent<GoogleMobileAdsScript>();
       //Debug.Log("sarah: level_common AWAKE");
       screen_pixel = new Vector3(Screen.width, Screen.height, 1);
 
@@ -100,6 +102,8 @@ public class level_common : MonoBehaviour
                {
                   //Debug.Log(" touch hit == back button");
                   btn_back.audio.Play();
+                  ads_script.bannerView.Hide();
+                  ads_script.bannerView.Destroy();
                   Application.LoadLevel("choose_level");
                }
                if (hit == background)

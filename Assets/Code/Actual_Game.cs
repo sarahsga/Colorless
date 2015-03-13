@@ -69,18 +69,19 @@ public class Actual_Game : MonoBehaviour
    public GameObject time_bar;
    private time_bar time_bar_script;
    private shuffle shuffle_script;
+   private GoogleMobileAdsScript ads_script;
 
    private text_repeat text_repeat_script;
-
    void Awake()
    {
+      ads_script = GetComponent<GoogleMobileAdsScript>();
       //Debug.Log("sarah: Actual_Game AWAKE");
       text_repeat_script = GetComponent<text_repeat>();
       shuffle_script = GetComponent<shuffle>();
       level_common_script = GetComponent<level_common>();
       randomness_obj = new randomness();
       time_bar = level_common_script.time_bar;
-      time_bar_script = time_bar.GetComponent<time_bar>();   
+      time_bar_script = time_bar.GetComponent<time_bar>();
    }
 
    // Use this for initialization
@@ -120,7 +121,7 @@ public class Actual_Game : MonoBehaviour
       {
          Check_Level();
          randomness_obj.random_index_list_gen(DIFFICULTY);
-      
+
          colors = new GameObject[DIFFICULTY];
          for (int i = 0; i < colors.Length; i++)
          {
@@ -161,7 +162,7 @@ public class Actual_Game : MonoBehaviour
          // board.y units   ------> (40 / 100 ) * board.y --- size of 6 gaps together
          // size per gap = ((40 / 100 ) * board.y ) / 3
 
-         
+
          // here's the sequence:
          // | gap | colorbox | gap | colorbox | gap | colorbox | gap |
          // here's the formula for finding out the positions for each colorbox ( only x coordinate shown
@@ -203,89 +204,96 @@ public class Actual_Game : MonoBehaviour
    {
       if (level == 1 || level == 2 || level == 3)
       {
-         if (level_common_script.justStarted == false && isOver == false)
+         if (isOver == false)
          {
-            if (start_level == true)
+            ads_script.bannerView.Hide();
+            if (level_common_script.justStarted == false)
             {
-               //Debug.Log("start_level = true");
-               for (int i = 0; i < greys.Length; i++)
+               if (start_level == true)
                {
-                  greys[i].renderer.enabled = true;
-               }
-               start_level = false;
-               color = randomness_obj.random_color_gen(0,DIFFICULTY);
-               color_display_gen();
-            }
-            else if (Input.touchCount > 0 && shuffle_script.isShuffling == false && text_repeat_script.isReady == true)
-            {
-               Touch touch = Input.GetTouch(0);
-
-               if (touch.phase == TouchPhase.Began)
-               {
-                  //Debug.Log("Touch phase began");
-                  touch_world = Camera.main.ScreenToWorldPoint(touch.position);
-                  touch_world.z = 1;
-
-                  //Debug.Log("layer = " + LayerMask.NameToLayer("grey_guess"));
-
-                  hit = (BoxCollider2D)Physics2D.OverlapPoint(touch_world, 1 << LayerMask.NameToLayer("grey_guess"));
-
-                  if (hit)
+                  //Debug.Log("start_level = true");
+                  for (int i = 0; i < greys.Length; i++)
                   {
-                     //Debug.Log(" easy hit " + hit.ToString());
-                     for (int i = 0; i < greys.Length; i++)
+                     greys[i].renderer.enabled = true;
+                  }
+                  start_level = false;
+                  color = randomness_obj.random_color_gen(0, DIFFICULTY);
+                  color_display_gen();
+               }
+               else if (Input.touchCount > 0 && shuffle_script.isShuffling == false && text_repeat_script.isReady == true)
+               {
+                  Touch touch = Input.GetTouch(0);
+
+                  if (touch.phase == TouchPhase.Began)
+                  {
+                     //Debug.Log("Touch phase began");
+                     touch_world = Camera.main.ScreenToWorldPoint(touch.position);
+                     touch_world.z = 1;
+
+                     //Debug.Log("layer = " + LayerMask.NameToLayer("grey_guess"));
+
+                     hit = (BoxCollider2D)Physics2D.OverlapPoint(touch_world, 1 << LayerMask.NameToLayer("grey_guess"));
+
+                     if (hit)
                      {
-                        if (hit == greys[i])
+                        //Debug.Log(" easy hit " + hit.ToString());
+                        for (int i = 0; i < greys.Length; i++)
                         {
-                           //Debug.Log(" hit grey[ " + i + "]");
-                           greys[i].renderer.enabled = false;
-                           //Debug.Log("color = " + color + " compared to random_index_list [" + i + "] = " + randomness_obj.random_index_list[i]);
-                           if (color == (int)randomness_obj.random_index_list[i])
+                           if (hit == greys[i])
                            {
-                              //Debug.Log("touch = correct!!");
-                              show = false;
-                              even_odd = 0;
-                              score++;
-                              isCorrect = true;
-                              sound_correct.audio.Play();
-                           }
-                           else
-                           {
-                              check_isOver();
-                              if (isOver != true) {
-                                 //Debug.Log("blinker: isOver != true..");
-                                 for (int k = 0; k < greys.Length; k++) {
-                                    if (color == (int)randomness_obj.random_index_list[k]) {
-                                       //Debug.Log("blinker: the_correct_one = " + k);                                       
-                                       the_correct_one = k;
-                                       show = true;
-                                       break;
+                              //Debug.Log(" hit grey[ " + i + "]");
+                              greys[i].renderer.enabled = false;
+                              //Debug.Log("color = " + color + " compared to random_index_list [" + i + "] = " + randomness_obj.random_index_list[i]);
+                              if (color == (int)randomness_obj.random_index_list[i])
+                              {
+                                 //Debug.Log("touch = correct!!");
+                                 show = false;
+                                 even_odd = 0;
+                                 score++;
+                                 isCorrect = true;
+                                 sound_correct.audio.Play();
+                              }
+                              else
+                              {
+                                 check_isOver();
+                                 if (isOver != true)
+                                 {
+                                    //Debug.Log("blinker: isOver != true..");
+                                    for (int k = 0; k < greys.Length; k++)
+                                    {
+                                       if (color == (int)randomness_obj.random_index_list[k])
+                                       {
+                                          //Debug.Log("blinker: the_correct_one = " + k);                                       
+                                          the_correct_one = k;
+                                          show = true;
+                                          break;
+                                       }
                                     }
                                  }
+                                 sound_wrong.audio.Play();
                               }
-                              sound_wrong.audio.Play();
                            }
                         }
                      }
                   }
-               }
-               else if (touch.phase == TouchPhase.Ended)
-               {
-                  //Debug.Log("touch ended");
-                  for (int i = 0; i < greys.Length; i++)
+                  else if (touch.phase == TouchPhase.Ended)
                   {
-                     //Debug.Log("blinker: about to disable...");
-                     if (i == the_correct_one && show == true)
-                     { }
-                     else
+                     //Debug.Log("touch ended");
+                     for (int i = 0; i < greys.Length; i++)
                      {
-                        greys[i].renderer.enabled = true;
+                        //Debug.Log("blinker: about to disable...");
+                        if (i == the_correct_one && show == true)
+                        { }
+                        else
+                        {
+                           greys[i].renderer.enabled = true;
+                        }
                      }
-                  }
-                  if (isCorrect == true)
-                  {
-                     isCorrect = false;
-                     color_display_gen();
+                     if (isCorrect == true)
+                     {
+                        isCorrect = false;
+                        color_display_gen();
+                     }
                   }
                }
             }
@@ -298,19 +306,22 @@ public class Actual_Game : MonoBehaviour
                   {
                      greys[the_correct_one].renderer.enabled = true;
                   }
-                  else {
+                  else
+                  {
                      greys[the_correct_one].renderer.enabled = false;
                   }
                }
                even_odd++;
-               if (even_odd > 100) { // want to show the correct one not for long
+               if (even_odd > 100)
+               { // want to show the correct one not for long
                   even_odd = 0;
                   show = false;
                   greys[the_correct_one].renderer.enabled = true;
                }
             }
          }
-         else if (isOver == true && even_odd < 100) {
+         else if (isOver == true && even_odd < 100)
+         {
             if (even_odd == 0)
             {
                for (int i = 0; i < greys.Length; i++)
@@ -318,8 +329,10 @@ public class Actual_Game : MonoBehaviour
                   greys[i].renderer.enabled = false;
                }
             }
-            else {
-               if (even_odd % 20 == 0) {
+            else
+            {
+               if (even_odd % 20 == 0)
+               {
                   if (greys[0].renderer.enabled == false)
                   {
                      for (int i = 0; i < greys.Length; i++)
@@ -327,7 +340,8 @@ public class Actual_Game : MonoBehaviour
                         greys[i].renderer.enabled = true;
                      }
                   }
-                  else {
+                  else
+                  {
                      for (int i = 0; i < greys.Length; i++)
                      {
                         greys[i].renderer.enabled = false;
@@ -340,12 +354,14 @@ public class Actual_Game : MonoBehaviour
       }
    }
 
-   private void check_isOver() {
+   private void check_isOver()
+   {
       if (chance == true)
       {
          chance = false;
       }
-      else {
+      else
+      {
          isOver = true;
       }
    }
@@ -354,7 +370,7 @@ public class Actual_Game : MonoBehaviour
    {
       while (true)
       {
-         random_int = randomness_obj.random_color_gen(0,DIFFICULTY);
+         random_int = randomness_obj.random_color_gen(0, DIFFICULTY);
          if (random_int != color)
          {
             color = random_int;
@@ -371,7 +387,8 @@ public class Actual_Game : MonoBehaviour
       //Debug.Log("color (int) = " + color + " = " + color_display_obj.ToString());
    }
 
-   public void Check_Level() {
+   public void Check_Level()
+   {
       if (level == 1)
       {
          DIFFICULTY = 4;

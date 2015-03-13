@@ -16,7 +16,9 @@ public class Start_main : MonoBehaviour
    private BoxCollider2D hit;
    public GameObject sound_click;
 
-   
+   void Awake() {
+
+   }
 
    // Use this for initialization
    void Start()
